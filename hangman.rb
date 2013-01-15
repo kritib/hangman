@@ -1,4 +1,13 @@
-class Hangman
+#Kriti - love the little graphic. played a couple times, won, 
+#decided to stop while i was ahead so your program wouldnt laugh at me :P
+#My comments on specific methods are shown below
+#Although this game works well in itself, since u havent started with a
+#HumanPlayer class, would be very difficult to adjust into it the option 
+#of having the computer guess the word
+#Other than the play method, all looked good to me :)
+
+
+class Hangman 
   BOARDS = [
     ["   ", "   ", "   ", "   "],
     [" 0 ", "   ", "   ", "   "],
@@ -14,9 +23,14 @@ class Hangman
   attr_accessor :secret_word
 
   def initialize
-    @dictionary = File.open('dictionary.txt').each_line.collect(&:chomp)
+    #Kriti - theres an easier method File.readlines(filename).map(&:chomp) that 
+    #does the same thing without the danger of leaving the file open after.
+
+    @dictionary = File.open('dictionary.txt').each_line.collect(&:chomp)   
   end
 
+  #Kriti - We had the same problem here, but this method is way too big!
+  #If u can think of a good way to refactor this, do let me know!
   def play
     print_welcome
     @secret_word = get_secret_word
